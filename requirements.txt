@@ -1,0 +1,11 @@
+flake8 == 3.7.9
+Flask == 1.1.1
+Flask-JWT == 0.3.2
+gunicorn == 20.0.4
+MarkupSafe == 1.1.1
+nose2 == 0.9.1
+pycodestyle == 2.5.0
+pyflakes == 2.1.1
+PyJWT == 1.4.2
+pytz == 2019.3
+requests == 2.22.0
