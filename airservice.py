@@ -68,6 +68,31 @@ def airports_by_country_code(query):
             "runways": aport[1]["runways"]
      }
 
+@app.route('/health/live',  methods=['GET'])
+def healthlive():
+    try:
+        stat = requests.get("http://0.0.0.0:8080/health/live", timeout=5)
+        
+
+    except Exception as e:
+        return e
+
+    return {
+        stat.status_code
+    }
+
+@app.route('/health/ready',  methods=['GET'])
+def healthready():
+    try:
+        stat = requests.get("http://0.0.0.0:8080/health/ready", timeout=5)
+        
+    except Exception as e:
+        return e
+
+    return {
+        stat.status_code
+    }
+
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', debug=True)
+    app.run(debug=True)

@@ -1,6 +1,9 @@
 # pull official base image
 FROM python:3.8.0-alpine
 
+#Add User
+RUN adduser -D testapp
+
 # set work directory
 WORKDIR /testapp
 
@@ -15,3 +18,14 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /testapp/
+
+RUN chown -R testapp:testapp /testapp
+
+USER testapp
+
+#Port
+EXPOSE 5000
+
+#command
+CMD ["gunicorn", "--b", "127.0.0.1:8000", "wsgi:app"]
+#CMD ["python", "app.py"]
