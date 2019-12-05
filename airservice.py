@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import requests
 from flask_jwt import JWT, jwt_required
 
@@ -44,7 +44,8 @@ jwt = JWT(app, verify, identity)
 @app.route('/airports', methods=['GET'])
 def airports():
     try:
-        airports_info = requests.get("http://0.0.0.0:8080/airports", timeout=5).json()
+        val = request.args['full']
+        airports_info = requests.get("http://0.0.0.0:8080/airports?full={}".format(val), timeout=5).json()
         # print(airports_info)
     except (requests.RequestException, ValueError):
         return ValueError
