@@ -8,4 +8,4 @@ pycodestyle == 2.5.0
 pyflakes == 2.1.1
 PyJWT == 1.4.2
 pytz == 2019.3
-requests == 2.21.0
+requests == 2.31.0
